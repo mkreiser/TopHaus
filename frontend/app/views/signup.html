@@ -1,0 +1,44 @@
+<div>
+  <div class="centered-card demo-card-wide mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">Edit Profile</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      <md-input-container>
+        <label>Gender</label>
+        <input ng-model="user.gender">
+      </md-input-container>
+      <md-input-container>
+        <label>Location</label>
+        <input ng-model="user.location">
+      </md-input-container>
+      <md-input-container>
+        <label>Company</label>
+        <input ng-model="user.company">
+      </md-input-container>
+      <md-input-container>
+        <label>Budget</label>
+        <input ng-model="user.budget" type="number">
+      </md-input-container>
+      <md-input-container>
+        <label># of Roommates</label>
+        <input ng-model="user.roommates" type="number">
+      </md-input-container>
+      <md-input-container>
+        <label>Length of Stay</label>
+        <input ng-model="user.staylength" type="number">
+      </md-input-container>
+      <span>Perferences</span>
+      <md-checkbox>Near schools</md-checkbox>
+      <md-checkbox>Near restaurants</md-checkbox>
+      <md-checkbox>Pool</md-checkbox>
+      <md-checkbox>Gym</md-checkbox>
+      <md-checkbox>Garden</md-checkbox>
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+        Submit
+      </a>
+    </div>
+  </div>
+</div>
