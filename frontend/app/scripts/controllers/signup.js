@@ -28,7 +28,8 @@ angular.module('frontendApp')
           "company": $scope.user.company
         }
       )
-      .success(function() {
+      .success(function(response) {
+        $rootScope.user = response;
         $rootScope.showSimpleToast('Welcome!');
         $rootScope.goToState('overview');
       });
