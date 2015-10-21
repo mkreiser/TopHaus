@@ -7,17 +7,14 @@ angular.module('frontendApp')
     // Log a user in
     $scope.login = function() {
       $rootScope.user = $scope.user;
-      /* 
-      * $http.post({
-      *   url:
-      *   data: {
-      *     username: $scope.user.name
-      *   }
-      * })
-      * .then(function(response) {
-      * 
-      * });
-      */
+       
+      $http.get({
+        url: 'localhost:8000/users/?name=' + $scope.user.name
+      })
+      .then(function(response) {
+        console.log(response);
+      });
+      
         
       $rootScope.goToState('overview');
     };
