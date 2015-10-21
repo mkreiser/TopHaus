@@ -2,33 +2,31 @@
 
 angular.module('frontendApp')
 
-.controller('houseOverviewCtrl', function($rootScope, $scope) {
+.controller('houseOverviewCtrl', function($http, $rootScope, $scope) {
     $scope.searchForHouse = function(search) {
-    	/*
-    	$http.post({
-				url:
-				data: {
-	
-				}
-    	}).then(function() {
-	
+    	
+    	$http.get(
+        'http://localhost:8000/houses/?format=json&location=' + search
+      )
+      .then(function(response) {
+	     console.log(response);
     	});
-    	 */
+    	 
       
       $rootScope.goToState('house_search');
     };
 
     $scope.listHouse = function(house) {
-      /*
-    	$http.post({
-				url:
-				data: {
-	
+    	$http.post(
+				'http://localhost:8000/houses/newHouse/',
+				{
+          	"location": house.location,
+            "exact_cost": house.cost,
+            "number_of_people": house.roommates,
+            "style": house.style
 				}
-    	}).then(function() {
-	
+    	).then(function(response) {
+       $rootScope.showSimpleToast('Added a house!');
     	});
-    	 */
-      $rootScope.showSimpleToast('Added a house!');
     };
   });

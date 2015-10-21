@@ -2,21 +2,21 @@
 
 angular.module('frontendApp')
 
-.controller('loginCtrl', function($rootScope, $scope) {
+.controller('loginCtrl', function($http, $rootScope, $scope) {
     
     // Log a user in
     $scope.login = function() {
-      $rootScope.user = $scope.user;
-       
-      $http.get({
-        url: 'localhost:8000/users/?name=' + $scope.user.name
-      })
+      $http.get('http://localhost:8000/users/?format=json&name=' + $scope.user.name)
       .then(function(response) {
-        console.log(response);
+        if (!response.data.length) {
+          $rootScope.showSimpleToast('Invalid Login');
+        } else {
+          $rootScope.showSimpleToast('Welcome!');
+          $rootScope.user = response.data[0];
+
+          $rootScope.goToState('overview');
+        }
       });
-      
-        
-      $rootScope.goToState('overview');
     };
 
     $scope.signup = function() {

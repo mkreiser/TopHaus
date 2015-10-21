@@ -2,7 +2,7 @@
 
 angular.module('frontendApp')
 
-.controller('editProfileCtrl', function($rootScope, $scope) {
+.controller('editProfileCtrl', function($http, $rootScope, $scope) {
     $scope.user = $rootScope.user;
 
     if (!$scope.user) {
@@ -13,9 +13,24 @@ angular.module('frontendApp')
 
     $scope.updateUser = function() {
       $scope.user.preferences = $scope.user.preferences.join();
-      $rootScope.user = $scope.user;
 
-      $rootScope.showSimpleToast('Profile updated!');
+      $http.post('http://localhost:8000/users/newUser/',
+        {
+          "name": $scope.user.name,
+          "gender": $scope.user.gender,
+          "budget": $scope.user.budget,
+          "number_of_roommates": $scope.user.roommates,
+          "style": $scope.user.style,
+          "location": $scope.user.location,
+          "type_of_time": "D",
+          "length_of_stay": $scope.user.staylength,
+          "preferences": $scope.user.preferences,
+          "company": $scope.user.company
+        }
+      )
+      .then(function(response) {
+        $rootScope.showSimpleToast('Profile updated!');
+      });
     };
 
     $scope.toggle = function (item, list) {
