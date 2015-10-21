@@ -2,19 +2,19 @@
 
 angular.module('frontendApp')
 
-.controller('editProfileCtrl', function($http, $rootScope, $scope) {
+.controller('signupCtrl', function($http, $rootScope, $scope) {
     $scope.user = $rootScope.user;
 
     if (!$scope.user) {
       $scope.user = { preferences: [] };
     } else if (!$scope.user.preferences) {
       $scope.user.preferences = [];
-    }
+    } 
 
     $scope.updateUser = function() {
       $scope.user.preferences = $scope.user.preferences.join();
 
-      $http.put('http://localhost:8000/users/updateUser/' + $rootScope.user.id + '/',
+      $http.post('http://localhost:8000/users/newUser/',
         {
           "name": $scope.user.name,
           "gender": $scope.user.gender,

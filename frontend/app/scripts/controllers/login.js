@@ -21,6 +21,6 @@ angular.module('frontendApp')
 
     $scope.signup = function() {
       $rootScope.user = $scope.user;
-      $rootScope.goToState('edit_profile');
+      $rootScope.goToState('signup');
     };
   });

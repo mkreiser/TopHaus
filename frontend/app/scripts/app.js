@@ -35,8 +35,12 @@ angular
         templateUrl: 'views/house_search.html',
         controller: 'houseSearchCtrl'
       })
-      .when('/edit_profile', {
+      .when('/signup', {
         templateUrl: 'views/signup.html',
+        controller: 'signupCtrl'
+      })
+      .when('/edit_profile', {
+        templateUrl: 'views/edit_profile.html',
         controller: 'editProfileCtrl'
       })
       .when('/edit_house', {
