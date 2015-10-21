@@ -9,6 +9,8 @@ angular.module('frontendApp')
       $scope.user = { preferences: [] };
     } else if (!$scope.user.preferences) {
       $scope.user.preferences = [];
+    } else {
+      $scope.user.preferences = $scope.user.preferences.split(',');
     }
 
     $scope.updateUser = function() {
