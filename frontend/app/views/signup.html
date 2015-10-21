@@ -28,10 +28,15 @@
         <label>Length of Stay</label>
         <input ng-model="user.staylength" type="number">
       </md-input-container>
-      <md-input-container>
-        <label>Style</label>
-        <input ng-model="user.style" type="text">
-      </md-input-container>
+      <md-select ng-model="user.style" aria-label="style">
+        <md-option value="Art Deco">Art Deco</md-option>
+        <md-option value="Igloo">Igloo</md-option>
+        <md-option value="Modern">Modern</md-option>
+        <md-option value="Post Modern">Post-modern</md-option>
+        <md-option value="Rustic">Rustic</md-option>
+        <md-option value="Ranch">Ranch</md-option>
+        <md-option value="Urban">Urban</md-option>
+      </md-select>
       <span>Perferences</span>
       <md-checkbox ng-click="toggle('Near schools', user.preferences)">Near schools</md-checkbox>
       <md-checkbox ng-click="toggle('Near restaurants', user.preferences)">Near restaurants</md-checkbox>
