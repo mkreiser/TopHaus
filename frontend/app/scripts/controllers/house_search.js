@@ -4,7 +4,7 @@ angular.module('frontendApp')
 
 .controller('houseSearchCtrl', function($rootScope, $scope) {
 	$scope.editHouse = function(house) {
-		console.log(house);
+		$rootScope.editHouseId = house;
 		$rootScope.goToState('edit_house');
 	};
 });
