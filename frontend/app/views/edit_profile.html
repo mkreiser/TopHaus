@@ -33,11 +33,11 @@
         <input ng-model="user.style" type="text">
       </md-input-container>
       <span>Preferences</span>
-      <md-checkbox ng-click="toggle('Near schools', user.preferences)">Near schools</md-checkbox>
-      <md-checkbox ng-click="toggle('Near restaurants', user.preferences)">Near restaurants</md-checkbox>
-      <md-checkbox ng-click="toggle('Pool', user.preferences)">Pool</md-checkbox>
-      <md-checkbox ng-click="toggle('Gym', user.preferences)">Gym</md-checkbox>
-      <md-checkbox ng-click="toggle('Garden', user.preferences)">Garden</md-checkbox>
+      <md-checkbox ng-click="toggle('Near schools', user.preferences)" ng-checked="exists('Near schools', user.preferences)">Near schools</md-checkbox>
+      <md-checkbox ng-click="toggle('Near restaurants', user.preferences)" ng-checked="exists('Near restaurants', user.preferences)">Near restaurants</md-checkbox>
+      <md-checkbox ng-click="toggle('Pool', user.preferences)" ng-checked="exists('Pool', user.preferences)">Pool</md-checkbox>
+      <md-checkbox ng-click="toggle('Gym', user.preferences)" ng-checked="exists('Gym', user.preferences)">Gym</md-checkbox>
+      <md-checkbox ng-click="toggle('Garden', user.preferences)" ng-checked="exists('Garden', user.preferences)">Garden</md-checkbox>
     </div> 
     <div class="mdl-card__actions mdl-card--border">
       <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" ng-click="updateUser()">

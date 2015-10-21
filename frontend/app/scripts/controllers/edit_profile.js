@@ -50,5 +50,8 @@ angular.module('frontendApp')
       if (idx > -1) {list.splice(idx, 1);}
       else {list.push(item);}
     };
+    $scope.exists = function (item, list) {
+      return list.indexOf(item) > -1;
+    };
   });
   
