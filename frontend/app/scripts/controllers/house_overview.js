@@ -5,12 +5,12 @@ angular.module('frontendApp')
 .controller('houseOverviewCtrl', function($http, $rootScope, $scope) {
     $scope.searchForHouse = function(search) {
     	
-    	$http.get(
-        'http://localhost:8000/houses/?format=json&location=' + search
-      )
-      .then(function(response) {
-	     console.log(response);
-    	});
+  	$http.get(
+      'http://localhost:8000/houses/?format=json&location=' + search
+    )
+    .then(function(response) {
+       $rootScope.searchResults = response.data;
+  	});
     	 
       
       $rootScope.goToState('house_search');
