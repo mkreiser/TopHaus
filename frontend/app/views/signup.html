@@ -6,30 +6,30 @@
     <div class="mdl-card__supporting-text">
       <md-input-container>
         <label>Gender</label>
-        <input ng-model="user.gender">
+        <input ng-model="user.gender" required>
       </md-input-container>
       <md-input-container>
         <label>Location</label>
-        <input ng-model="user.location">
+        <input ng-model="user.location" required>
       </md-input-container>
       <md-input-container>
         <label>Company</label>
-        <input ng-model="user.company">
+        <input ng-model="user.company" required>
       </md-input-container>
       <md-input-container>
         <label>Budget</label>
-        <input ng-model="user.budget" type="number">
+        <input ng-model="user.budget" type="number" required>
       </md-input-container>
       <md-input-container>
         <label># of Roommates</label>
-        <input ng-model="user.roommates" type="number">
+        <input ng-model="user.roommates" type="number" required>
       </md-input-container>
       <md-input-container>
         <label>Length of Stay</label>
-        <input ng-model="user.staylength" type="number">
+        <input ng-model="user.staylength" type="number" required>
       </md-input-container>
       <label>Style</label>
-      <md-select ng-model="user.style" aria-label="style">
+      <md-select ng-model="user.style" aria-label="style" required>
         <md-option value="Art Deco">Art Deco</md-option>
         <md-option value="Igloo">Igloo</md-option>
         <md-option value="Modern">Modern</md-option>
