@@ -10,7 +10,7 @@ angular.module('frontendApp')
         $scope.user = { preferences: [] };
       } else if (!$scope.user.preferences) {
         $scope.user.preferences = [];
-      } else {
+      } else if (typeof $scope.user.preferences === 'string') {
         $scope.user.preferences = $scope.user.preferences.split(',');
       }
     };
@@ -37,7 +37,8 @@ angular.module('frontendApp')
           "company": $scope.user.company
         }
       )
-      .success(function() {
+      .success(function(response) {
+        $rootScope.user = response;
         updatePreferences();
 
         $rootScope.showSimpleToast('Profile updated!');
