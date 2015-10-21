@@ -51,7 +51,7 @@ angular
         redirectTo: '/'
       });
   })
-  .controller('appCtrl', function($location, $mdToast, $rootScope) {
+  .controller('appCtrl', function($http, $location, $mdToast, $rootScope) {
 
     // Check if the user is logged in
     if (!$rootScope.user) {
