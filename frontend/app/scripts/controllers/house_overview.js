@@ -9,10 +9,10 @@ angular.module('frontendApp')
         'http://localhost:8000/houses/?format=json&location=' + search
       )
       .success(function(response) {
-        if (!response.data) {
+        if (!response.length) {
           $rootScope.showSimpleToast('No results!');
         } else {
-          $rootScope.searchResults = response.data;
+          $rootScope.searchResults = response;
           $rootScope.goToState('house_search');
         }
     	});
@@ -27,7 +27,7 @@ angular.module('frontendApp')
             "number_of_people": house.roommates,
             "style": house.style
 				}
-    	).then(function(response) {
+    	).success(function() {
        $rootScope.showSimpleToast('Added a house!');
     	});
     };
