@@ -9,7 +9,7 @@ angular.module('frontendApp')
         'http://localhost:8000/houses/?format=json&location=' + search
       )
       .success(function(response) {
-        if (!response.data.length) {
+        if (!response.data) {
           $rootScope.showSimpleToast('No results!');
         } else {
           $rootScope.searchResults = response.data;
