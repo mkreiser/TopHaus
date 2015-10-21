@@ -259,3 +259,8 @@ md-input-container {
   height: 176px;
   color: #FFF;
 }
+.demo-card-wide.image > .mdl-card__title {
+  background: url('../../images/city.jpg') center / cover;
+  height: 176px;
+  color: #FFF;
+}

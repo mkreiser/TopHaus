@@ -29,14 +29,14 @@
         <input ng-model="user.staylength" type="number">
       </md-input-container>
       <span>Perferences</span>
-      <md-checkbox>Near schools</md-checkbox>
-      <md-checkbox>Near restaurants</md-checkbox>
-      <md-checkbox>Pool</md-checkbox>
-      <md-checkbox>Gym</md-checkbox>
-      <md-checkbox>Garden</md-checkbox>
-    </div>
+      <md-checkbox ng-click="toggle('Near schools', user.preferences)">Near schools</md-checkbox>
+      <md-checkbox ng-click="toggle('Near restaurants', user.preferences)">Near restaurants</md-checkbox>
+      <md-checkbox ng-click="toggle('Pool', user.preferences)">Pool</md-checkbox>
+      <md-checkbox ng-click="toggle('Gym', user.preferences)">Gym</md-checkbox>
+      <md-checkbox ng-click="toggle('Garden', user.preferences)">Garden</md-checkbox>
+    </div> 
     <div class="mdl-card__actions mdl-card--border">
-      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" ng-click="updateUser()">
         Submit
       </a>
     </div>
