@@ -12,14 +12,17 @@
     <div>${{house['exact_cost']}}</div>
     <br>
     <label>Style</label>
-    <div>house.style</div>
+    <div>{{house.style}}</div>
   </div>
   <div class="mdl-card__actions mdl-card--border">
   	<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
       Inquire
     </a>
-    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" ng-click="editHouse()">
+    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" ng-click="editHouse(house.id)">
       Edit
+    </a>
+    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" ng-click="deleteHouse(house.id)">
+      Delete
     </a>
   </div>
 </div>
