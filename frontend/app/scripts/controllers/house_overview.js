@@ -29,6 +29,7 @@ angular.module('frontendApp')
 				}
     	).success(function() {
        $rootScope.showSimpleToast('Added a house!');
+       $rootScope.goToState('/houses');
     	});
     };
   });
