@@ -2,7 +2,7 @@
 
 angular.module('frontendApp')
 
-.controller('houseSearchCtrl', function($rootScope, $scope) {
+.controller('houseSearchCtrl', function($http, $rootScope, $scope) {
 	$scope.editHouse = function(houseId) {
 		$rootScope.editHouseId = houseId;
 		$rootScope.goToState('edit_house');
