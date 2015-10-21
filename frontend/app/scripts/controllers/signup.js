@@ -29,7 +29,8 @@ angular.module('frontendApp')
         }
       )
       .success(function() {
-        $rootScope.showSimpleToast('Profile updated!');
+        $rootScope.showSimpleToast('Welcome!');
+        $rootScope.goToState('overview');
       });
     };
 
