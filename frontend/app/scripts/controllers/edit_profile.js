@@ -5,16 +5,20 @@ angular.module('frontendApp')
 .controller('editProfileCtrl', function($http, $rootScope, $scope) {
     $scope.user = $rootScope.user;
 
-    if (!$scope.user) {
-      $scope.user = { preferences: [] };
-    } else if (!$scope.user.preferences) {
-      $scope.user.preferences = [];
-    } else {
-      $scope.user.preferences = $scope.user.preferences.split(',');
-    }
+    var updatePreferences = function() {
+      if (!$scope.user) {
+        $scope.user = { preferences: [] };
+      } else if (!$scope.user.preferences) {
+        $scope.user.preferences = [];
+      } else {
+        $scope.user.preferences = $scope.user.preferences.split(',');
+      }
+    };
+
+    updatePreferences();
 
     $scope.user.roommates = $scope.user["number_of_roommates"];
-    $scope.user.stayLength = $scope.user["length_of_stay"];
+    $scope.user.staylength = $scope.user["length_of_stay"];
 
     $scope.updateUser = function() {
       $scope.user.preferences = $scope.user.preferences.join();
@@ -34,6 +38,8 @@ angular.module('frontendApp')
         }
       )
       .success(function() {
+        updatePreferences();
+
         $rootScope.showSimpleToast('Profile updated!');
       });
     };
