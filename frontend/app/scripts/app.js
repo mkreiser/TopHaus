@@ -77,6 +77,15 @@ angular
       );
     };
 
+    $rootScope.deleteAccount = function() {
+      $http
+      .delete('http://localhost:8000/users/deleteUser/' + $rootScope.user.id + '/')
+      .then(function() {
+        $rootScope.showSimpleToast('Deleted!');
+        $rootScope.logout();
+      });
+    };
+
     $rootScope.logout = function() {
       $rootScope.user = null;
       $rootScope.goToState('/');

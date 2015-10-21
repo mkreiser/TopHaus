@@ -62,6 +62,7 @@
               <span class="visuallyhidden">Accounts</span>
             </button>
             <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn" ng-show="$root.user">
+              <li class="mdl-menu__item" ng-click="$root.deleteAccount()">Delete Account</li>
               <li class="mdl-menu__item" ng-click="$root.logout()">Logout</li>
             </ul>
           </div>

@@ -13,6 +13,9 @@ angular.module('frontendApp')
       $scope.user.preferences = $scope.user.preferences.split(',');
     }
 
+    $scope.user.roommates = $scope.user.number_of_roommates;
+    $scope.user.stayLength = $scope.user.length_of_stay;
+
     $scope.updateUser = function() {
       $scope.user.preferences = $scope.user.preferences.join();
 
