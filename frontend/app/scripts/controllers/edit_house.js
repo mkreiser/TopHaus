@@ -5,7 +5,7 @@ angular.module('frontendApp')
 .controller('editHouseCtrl', function($http, $rootScope, $scope) {
 
 	$http.get(
-		'http://localhost:8000/houses/getHouse/' + $rootScope.editHouseId + '/'
+		$rootScope.serverHost + 'houses/getHouse/' + $rootScope.editHouseId + '/'
 		).success(function(response) {
 			$scope.house = response;
 			$scope.house.cost = $scope.house['exact_cost'];
@@ -15,7 +15,7 @@ angular.module('frontendApp')
 	$scope.saveHouse = function(house) {
 
 		$http.put(
-			'http://localhost:8000/houses/updateHouse/' + $rootScope.editHouseId + '/',
+			$rootScope.serverHost + 'houses/updateHouse/' + $rootScope.editHouseId + '/',
 			{
 			  	"location": house.location,
 			    "exact_cost": house.cost,

@@ -3,12 +3,11 @@
 angular.module('frontendApp')
 
 .controller('loginCtrl', function($http, $rootScope, $scope) {
-    
     // Log a user in
     $scope.login = function() {
-      $http.get('http://localhost:8000/users/?format=json&name=' + $scope.user.name)
+      $http.get($rootScope.serverHost + 'users?&name=' + $scope.user.name)
       .then(function(response) {
-        if (!response.data.length) {
+        if (response.data.length !== 1) {
           $rootScope.showSimpleToast('Invalid Login');
         } else {
           $rootScope.showSimpleToast('Welcome!');

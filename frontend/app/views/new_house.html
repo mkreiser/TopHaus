@@ -1,0 +1,60 @@
+<div class="centered-card demo-card mdl-card mdl-shadow--2dp">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">List a House</h2>
+  </div>
+  <div class="mdl-card__supporting-text">
+    <md-input-container>
+      <label>Rent</label>
+      <input ng-model="house.rent" type="number" min="0" required>
+    </md-input-container>
+    <md-input-container>
+      <label>Number of People</label>
+      <input ng-model="house.number_of_people" type="number" min="0" required>
+    </md-input-container>
+    <md-input-container>
+      <label>Style</label>
+      <md-select ng-model="house.style" aria-label="style" required>
+        <md-option value="Studio">Studio</md-option>
+        <md-option value="One Bedroom">One Bedroom</md-option>
+        <md-option value="Two Bedroom">Two Bedroom</md-option>
+        <md-option value="Three Bedroom">Three Bedroom</md-option>
+        <md-option value="Four Bedroom">Four Bedroom</md-option>
+        <md-option value="Five Bedroom">Five Bedroom</md-option>
+        <md-option value="Duplex/Triplex">Duplex/Triplex</md-option>
+        <md-option value="Condomium">Condomium</md-option>
+      </md-select>
+    </md-input-container>
+    <md-input-container>
+      <label>Length of Stay (days)</label>
+      <input ng-model="house.length_of_stay" type="number" min="0" required>
+    </md-input-container>
+    <md-input-container>
+      <label>Address</label>
+      <input ng-model="house.address" required>
+    </md-input-container>
+    <md-input-container>
+      <label>City</label>
+      <input ng-model="house.city" required>
+    </md-input-container>
+    <md-input-container>
+      <label>State</label>
+      <input ng-model="house.state" required>
+    </md-input-container>
+    <md-input-container>
+      <label>Zipcode</label>
+      <input ng-model="house.zipcode" md-maxlength="5" required>
+    </md-input-container>
+    <md-checkbox class="md-primary" ng-model="house.amenity.garden_backyard">Garden/Backyard</md-checkbox>
+    <md-checkbox class="md-primary" ng-model="house.amenity.pool">Pool</md-checkbox>
+    <md-checkbox class="md-primary" ng-model="house.amenity.gym">Gym</md-checkbox>
+    <md-checkbox class="md-primary" ng-model="house.amenity.shopping_mall">Shopping Mall</md-checkbox>
+    <md-checkbox class="md-primary" ng-model="house.amenity.beach">Beach</md-checkbox>
+    <md-checkbox class="md-primary" ng-model="house.amenity.movie_theater">Movie Theater</md-checkbox>
+    <md-checkbox class="md-primary" ng-model="house.amenity.amusement_park">Amusement Park</md-checkbox>
+  </div>
+  <div class="mdl-card__actions mdl-card--border">
+    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" ng-click="createHouse()">
+      Submit
+    </a>
+  </div>
+</div>

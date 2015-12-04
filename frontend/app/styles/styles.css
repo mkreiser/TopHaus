@@ -264,3 +264,12 @@ md-input-container {
   height: 176px;
   color: #FFF;
 }
+.centered-card {
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.search-box {
+  position: absolute;
+  max-width: 200px;
+}
