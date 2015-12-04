@@ -10,6 +10,10 @@
         <input ng-model="search.max_price" type="number" min="0" ng-disabled="disableFilters">
       </md-input-container>
       <md-input-container>
+        <label>City</label>
+        <input ng-model="search.city" ng-disabled="disableFilters">
+      </md-input-container>
+      <md-input-container>
         <label>Style</label>
         <md-select ng-model="search.style" aria-label="style" ng-disabled="disableFilters">
           <md-option value="Studio">Studio</md-option>
@@ -29,7 +33,6 @@
       <md-checkbox class="md-primary" ng-disabled="disableFilters" ng-model="amenity.beach">Beach</md-checkbox>
       <md-checkbox class="md-primary" ng-disabled="disableFilters" ng-model="amenity.movie_theater">Movie Theater</md-checkbox>
       <md-checkbox class="md-primary" ng-disabled="disableFilters" ng-model="amenity.amusement_park">Amusement Park</md-checkbox>
-      <br>
       <div>Expected Price</div>
       <md-input-container>
         <label>Month</label>
