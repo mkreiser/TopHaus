@@ -43,7 +43,10 @@ describe('Controller: houseSearchCtrl', function() {
 							amenity1: true,
 							amenity2: true
 						}
-					}
+					},
+					serverHost: 'host/',
+					showSimpleToast: function() {},
+					goToState: function() {}
 				}
 			});
 		};
@@ -103,6 +106,49 @@ describe('Controller: houseSearchCtrl', function() {
 			scope.$digest();
 
 			expect(scope.loading).toBeTruthy();
+		});
+
+		it('should call $http.get with the built amenity string', function() {
+			scope.search.style = 'some style';
+			scope.$digest();
+
+			expect($http.get).toHaveBeenCalledWith($rootScope.serverHost + 'amenities?house_amenity_bool=True&amenity1=True&amenity2=True');
+		});
+
+		describe('after promise resolution', function() {
+			describe('no amenities returned', function() {
+				it('should set scope.houses to empty array', function() {
+					scope.search.style = 'some style';
+					scope.$digest();
+
+					deferredGet.resolve({ data: [] });
+					scope.$digest();
+
+					expect(scope.houses).toEqual([]);
+				});
+
+				it('should set scope.loading to false', function() {
+					scope.search.style = 'some style';
+					scope.$digest();
+
+					deferredGet.resolve({ data: [] });
+					scope.$digest();
+
+					expect(scope.loading).toBeFalsy();
+				});
+			});
+
+			describe('amenities returned', function() {
+				it('should call $http.get with the returned amenities and search variables', function() {
+					scope.search.style = 'some style';
+					scope.$digest();
+
+					deferredGet.resolve({ data: [{ id: 'some id' }] });
+					scope.$digest();
+
+					expect($http.get).toHaveBeenCalledWith($rootScope.serverHost + 'houses?amenity=some id&max_price=1000&style=some style');
+				});
+			});
 		});
 	});
 
