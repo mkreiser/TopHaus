@@ -280,5 +280,44 @@ describe('Controller: houseSearchCtrl', function() {
 
 			expect(scope.houses[0].getExpectedPrice).toHaveBeenCalledWith('month', 'year');
 		});
+
+		describe('getExpectedPrice', function() {
+			it('should call $http.post', function() {
+				scope.search.style = 'some style';
+				scope.$digest();
+
+				deferredGet.resolve({ data: [{ id: 'some id' }] });
+				scope.$digest();
+
+				deferredGet.resolve({ data: [{ city: 'some city', style: 'some style' }] });
+				scope.$digest();
+
+				scope.expected = { month: 'month', year: 'year' };
+				scope.$digest();
+
+				expect($http.post).toHaveBeenCalled();
+			});
+
+			describe('after promise resolution', function() {
+				it('should assign the expected price from the response', function() {
+					scope.search.style = 'some style';
+					scope.$digest();
+
+					deferredGet.resolve({ data: [{ id: 'some id' }] });
+					scope.$digest();
+
+					deferredGet.resolve({ data: [{ city: 'some city', style: 'some style' }] });
+					scope.$digest();
+
+					scope.expected = { month: 'month', year: 'year' };
+					scope.$digest();
+
+					deferredPost.resolve({ data: { expected_price: 'some price' } });
+					scope.$digest();
+
+					expect(scope.houses[0].expectedPrice).toEqual('some price');
+				});
+			});
+		});
 	});
 });
