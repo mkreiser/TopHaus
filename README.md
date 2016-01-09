@@ -1,4 +1,4 @@
-# [TopHaüs](http://mikekreiser.me/tophaus) [![Build Status](https://travis-ci.org/mkreiser/TopHaus.svg?branch=master)](https://travis-ci.org/mkreiser/TopHaus) [![Coverage Status](https://coveralls.io/repos/mkreiser/TopHaus/badge.svg?branch=master&service=github)](https://coveralls.io/github/mkreiser/TopHaus?branch=master)
+# [TopHaüs](http://mikekreiser.me/tophaus) [![Build Status](https://travis-ci.org/mkreiser/TopHaus.svg?branch=master)](https://travis-ci.org/mkreiser/TopHaus) [![Coverage Status](https://coveralls.io/repos/mkreiser/TopHaus/badge.svg?branch=master&service=github)](https://coveralls.io/github/mkreiser/TopHaus?branch=master) [![Code Climate](https://codeclimate.com/github/mkreiser/TopHaus/badges/gpa.svg)](https://codeclimate.com/github/mkreiser/TopHaus)
 
 CS 411 group project completed in Fall 2015.
 
