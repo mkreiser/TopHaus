@@ -1,0 +1,15 @@
+engines:
+  rubocop:
+    enabled: true
+  golint:
+    enabled: true
+  eslint:
+    enabled: true
+  csslint:
+    enabled: true
+ratings:
+  paths:
+  - app/**
+exclude_paths:
+- test/spec/**/*
+- app/scripts/material.min.js
