@@ -149,5 +149,17 @@ describe('Controller: houseSearchCtrl', function() {
 
 			expect($http.post).not.toHaveBeenCalled();
 		});
+
+		it('should call getExpectedPrices when a valid expected object is passed', function() {
+			scope.expected = { month: 'month', year: 'year' };
+			scope.houses = [{
+				getExpectedPrice: function(month, year) {}
+			}];
+			spyOn(scope.houses[0], 'getExpectedPrice');
+
+			scope.$digest();
+
+			expect(scope.houses[0].getExpectedPrice).toHaveBeenCalled();
+		});
 	});
 });
