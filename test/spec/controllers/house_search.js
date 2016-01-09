@@ -148,6 +148,21 @@ describe('Controller: houseSearchCtrl', function() {
 
 					expect($http.get).toHaveBeenCalledWith($rootScope.serverHost + 'houses?amenity=some id&max_price=1000&style=some style');
 				});
+
+				describe('after promise resolution', function() {
+					it('should set getExpectedPrice for each house', function() {
+						scope.search.style = 'some style';
+						scope.$digest();
+
+						deferredGet.resolve({ data: [{ id: 'some id' }] });
+						scope.$digest();
+
+						deferredGet.resolve({ data: [{ house: 'some house' }] });
+						scope.$digest();
+
+						expect(scope.houses[0].getExpectedPrice).toEqual(jasmine.any(Function));
+					});
+				});
 			});
 		});
 	});
@@ -162,6 +177,64 @@ describe('Controller: houseSearchCtrl', function() {
 			scope.$digest();
 
 			expect(scope.loading).toBeTruthy();
+		});
+
+		it('should call $http.get with the built amenity string', function() {
+			scope.amenity.prop = true;
+			scope.$digest();
+
+			expect($http.get).toHaveBeenCalledWith($rootScope.serverHost + 'amenities?house_amenity_bool=True&amenity1=True&amenity2=True&prop=True');
+		});
+
+		describe('after promise resolution', function() {
+			describe('no amenities returned', function() {
+				it('should set scope.houses to empty array', function() {
+					scope.amenity.prop = true;
+					scope.$digest();
+
+					deferredGet.resolve({ data: [] });
+					scope.$digest();
+
+					expect(scope.houses).toEqual([]);
+				});
+
+				it('should set scope.loading to false', function() {
+					scope.amenity.prop = true;
+					scope.$digest();
+
+					deferredGet.resolve({ data: [] });
+					scope.$digest();
+
+					expect(scope.loading).toBeFalsy();
+				});
+			});
+
+			describe('amenities returned', function() {
+				it('should call $http.get with the returned amenities and search variables', function() {
+					scope.amenity.prop = true;
+					scope.$digest();
+
+					deferredGet.resolve({ data: [{ id: 'some id' }] });
+					scope.$digest();
+
+					expect($http.get).toHaveBeenCalledWith($rootScope.serverHost + 'houses?amenity=some id&max_price=1000&style=some');
+				});
+
+				describe('after promise resolution', function() {
+					it('should set getExpectedPrice for each house', function() {
+						scope.amenity.prop = true;
+						scope.$digest();
+
+						deferredGet.resolve({ data: [{ id: 'some id' }] });
+						scope.$digest();
+
+						deferredGet.resolve({ data: [{ house: 'some house' }] });
+						scope.$digest();
+
+						expect(scope.houses[0].getExpectedPrice).toEqual(jasmine.any(Function));
+					});
+				});
+			});
 		});
 	});
 
@@ -205,7 +278,7 @@ describe('Controller: houseSearchCtrl', function() {
 
 			scope.$digest();
 
-			expect(scope.houses[0].getExpectedPrice).toHaveBeenCalled();
+			expect(scope.houses[0].getExpectedPrice).toHaveBeenCalledWith('month', 'year');
 		});
 	});
 });
