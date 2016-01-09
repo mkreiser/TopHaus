@@ -15,8 +15,6 @@ angular.module('frontendApp')
   $scope.user.sleep = 3;
 
 	$scope.updateUser = function() {
-    console.log($scope.user);
-
     $http
       .post(
         $rootScope.serverHost + 'users/newUser/',
