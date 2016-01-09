@@ -3,7 +3,8 @@
 describe('Controller: appCtrl', function() {
 	beforeEach(module('frontendApp'));
 
-	var controller, deferred, $http, $location, $mdToast, $rootScope;
+	var controller, deferred;
+	var $http, $location, $mdToast, $rootScope;
 
 	beforeEach(inject(function($controller, _$http_, _$location_, _$mdToast_, $q, _$rootScope_) {
 		$http = _$http_;

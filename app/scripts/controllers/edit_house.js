@@ -6,14 +6,13 @@ angular.module('frontendApp')
 
 	$http.get(
 		$rootScope.serverHost + 'houses/getHouse/' + $rootScope.editHouseId + '/'
-		).success(function(response) {
+		).then(function(response) {
 			$scope.house = response;
 			$scope.house.cost = $scope.house['exact_cost'];
 			$scope.house.roommates = $scope.house['number_of_people'];
 		});
 
 	$scope.saveHouse = function(house) {
-
 		$http.put(
 			$rootScope.serverHost + 'houses/updateHouse/' + $rootScope.editHouseId + '/',
 			{
@@ -22,7 +21,7 @@ angular.module('frontendApp')
 			    "number_of_people": house.roommates,
 			    "style": house.style
 			}
-    ).success(function() {
+    ).then(function() {
        $rootScope.showSimpleToast('Added a house!');
        $rootScope.goToState('houses');
     });
