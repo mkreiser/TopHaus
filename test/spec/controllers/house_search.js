@@ -4,7 +4,7 @@ describe('Controller: houseSearchCtrl', function() {
 	beforeEach(module('frontendApp'));
 
 	var createNullController, createFullController;
-	var controller, deferredGet;
+	var controller, deferredGet, deferredPost;
 	var $http, $rootScope, scope;
 
 	beforeEach(inject(function($controller, _$http_, $q, _$rootScope_) {
@@ -19,8 +19,10 @@ describe('Controller: houseSearchCtrl', function() {
 		$rootScope.match = undefined;
 
 		deferredGet = $q.defer();
+		deferredPost = $q.defer();
 
 		spyOn($http, 'get').and.returnValue(deferredGet.promise);
+		spyOn($http, 'post').and.returnValue(deferredPost.promise);
 		spyOn($rootScope, 'goToState');
 		spyOn($rootScope, 'showSimpleToast');
 
@@ -88,6 +90,64 @@ describe('Controller: houseSearchCtrl', function() {
 
 		it('should undefine $rootScope.match once it is done processing', function() {
 			expect($rootScope.match).toBe(undefined);
+		});
+	});
+
+	describe('$scope.$watch search', function() {
+		beforeEach(function() {
+			controller = createFullController();
+		});
+
+		it('should set scope.loading to true', function() {
+			scope.search.style = 'some style';
+			scope.$digest();
+
+			expect(scope.loading).toBeTruthy();
+		});
+	});
+
+	describe('$scope.$watch amenity', function() {
+		beforeEach(function() {
+			controller = createFullController();
+		});
+
+		it('should set scope.loading to true', function() {
+			scope.amenity.prop = true;
+			scope.$digest();
+
+			expect(scope.loading).toBeTruthy();
+		});
+	});
+
+	describe('$scope.$watch expected', function() {
+		beforeEach(function() {
+			controller = createFullController();
+		});
+
+		it('should do nothing if scope.expected is not defined', function() {
+			scope.expected = undefined;
+			scope.$digest();
+
+			expect($http.post).not.toHaveBeenCalled();
+		});
+
+		it('should do nothing if scope.expected is an empty object', function() {
+			scope.expected = {};
+			scope.$digest();
+
+			expect($http.post).not.toHaveBeenCalled();
+		});
+
+		it('should do nothing if scope.expected does not have both properties', function() {
+			scope.expected = { month: 'month' };
+			scope.$digest();
+
+			expect($http.post).not.toHaveBeenCalled();
+
+			scope.expected = { year: 'year' };
+			scope.$digest();
+
+			expect($http.post).not.toHaveBeenCalled();
 		});
 	});
 });
