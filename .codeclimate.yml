@@ -13,3 +13,4 @@ ratings:
 exclude_paths:
 - test/spec/**/*
 - app/scripts/material.min.js
+- app/styles/material.min.css
