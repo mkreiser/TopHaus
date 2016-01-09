@@ -33,30 +33,32 @@ describe('Controller: editHouseCtrl', function() {
 
 	describe('after promise resolution', function() {
 		var response = {
-			'house': 'some house',
-			'exact_cost': 'cost',
-			'number_of_people': 'num_ppl'
+			data : {
+				'house': 'some house',
+				'exact_cost': 'cost',
+				'number_of_people': 'num_ppl'
+			}
 		};
 
 		it('should assign the response to scope.house', function() {
 			deferred.resolve(response);
 			scope.$digest();
 
-			expect(scope.house).toBe(response);
+			expect(scope.house).toBe(response.data);
 		});
 
 		it('should assign house.cost to exact_cost', function() {
 			deferred.resolve(response);
 			scope.$digest();
 
-			expect(scope.house.cost).toBe(response.exact_cost);
+			expect(scope.house.cost).toBe(response.data.exact_cost);
 		});
 
 		it('should assign house.roommates to number_of_people', function() {
 			deferred.resolve(response);
 			scope.$digest();
 
-			expect(scope.house.roommates).toBe(response.number_of_people);
+			expect(scope.house.roommates).toBe(response.data.number_of_people);
 		});
 	});
 

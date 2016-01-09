@@ -7,7 +7,7 @@ angular.module('frontendApp')
 	$http.get(
 		$rootScope.serverHost + 'houses/getHouse/' + $rootScope.editHouseId + '/'
 		).then(function(response) {
-			$scope.house = response;
+			$scope.house = response.data;
 			$scope.house.cost = $scope.house['exact_cost'];
 			$scope.house.roommates = $scope.house['number_of_people'];
 		});
