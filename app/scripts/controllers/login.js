@@ -7,7 +7,7 @@ angular.module('frontendApp')
     $scope.login = function() {
 
       if (!$scope.user || !$scope.user.name || !$scope.user.password) {
-        $rootScope.showSimpleToast('Invalid Login');
+        $rootScope.showSimpleToast('Invalid login');
         return;
       }
 
@@ -15,7 +15,7 @@ angular.module('frontendApp')
         .get($rootScope.serverHost + 'users?&name=' + $scope.user.name)
         .then(function(response) {
           if (response.data.length !== 1) {
-            $rootScope.showSimpleToast('Invalid Login');
+            $rootScope.showSimpleToast('Invalid login');
           } else {
             $rootScope.showSimpleToast('Welcome!');
             $rootScope.user = response.data[0];

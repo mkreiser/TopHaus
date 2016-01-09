@@ -6,7 +6,7 @@ angular.module('frontendApp')
 	$scope.createHouse = function() {
 		$http
 			.post($rootScope.serverHost + 'houses/newHouse/', $scope.house)
-			.then(function(response) {
+			.then(function() {
 				$rootScope.showSimpleToast('House created!');
 				$rootScope.goToState('houses');
 			});

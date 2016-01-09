@@ -11,8 +11,6 @@ describe('Controller: loginCtrl', function() {
 		$rootScope = _$rootScope_;
 		scope = $rootScope.$new();
 
-		$rootScope.user = { id: 'id' };
-
 		$rootScope.serverHost = 'host/';
 		$rootScope.showSimpleToast = function() {};
 		$rootScope.goToState = function() {};
@@ -62,6 +60,83 @@ describe('Controller: loginCtrl', function() {
 			scope.signup();
 
 			expect($rootScope.goToState).toHaveBeenCalledWith('signup');
+		});
+	});
+
+	describe('$scope.login', function() {
+		var user = {
+			name: 'name',
+			password: 'password'
+		};
+
+		it('should toast if the user is not defined', function() {
+			scope.user = undefined;
+			scope.login();
+
+			expect($rootScope.showSimpleToast).toHaveBeenCalledWith('Invalid login');
+		});
+
+		it('should toast if the user name is not defined', function() {
+			scope.user = {};
+			scope.login();
+
+			expect($rootScope.showSimpleToast).toHaveBeenCalledWith('Invalid login');
+		});
+
+		it('should toast if the user password is not defined', function() {
+			scope.user = { name: 'name' };
+			scope.login();
+
+			expect($rootScope.showSimpleToast).toHaveBeenCalledWith('Invalid login');
+		});
+
+		it('should call $http.get', function() {
+			scope.user = user;
+			scope.login();
+
+			expect($http.get).toHaveBeenCalledWith($rootScope.serverHost + 'users?&name=name');
+		});
+
+		describe('after promise resolution', function() {
+			it('should toast if response is empty', function() {
+				scope.user = user;
+				scope.login();
+
+				deferredGet.resolve({ data: [] });
+				scope.$digest();
+
+				expect($rootScope.showSimpleToast).toHaveBeenCalledWith('Invalid login');
+			});
+
+			it('should toast welcome if response is valid', function() {
+				scope.user = user;
+				scope.login();
+
+				deferredGet.resolve({ data: ['user'] });
+				scope.$digest();
+
+				expect($rootScope.showSimpleToast).toHaveBeenCalledWith('Welcome!');
+			});
+
+			it('should toast welcome if response is valid', function() {
+				scope.user = user;
+				scope.login();
+
+				deferredGet.resolve({ data: ['user'] });
+				scope.$digest();
+
+				expect($rootScope.user).toEqual('user');
+			});
+
+			it('should toast welcome if response is valid', function() {
+				scope.user = user;
+				scope.login();
+
+				deferredGet.resolve({ data: ['user'] });
+				scope.$digest();
+
+				expect($rootScope.goToState).toHaveBeenCalledWith('overview');
+			});
 		});
 	});
 });
